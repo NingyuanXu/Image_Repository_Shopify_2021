@@ -1,37 +1,19 @@
 package model;
 
 public class Buyer {
-    private int bId;
     private String name;
     private float moneyOwned;
 
-    public Buyer(int bId, String name, float moneyOwned) {
-        this.bId = bId;
+    public Buyer(String name, float moneyOwned) {
         this.name = name;
         this.moneyOwned = moneyOwned;
     }
 
-    public int getbId() {
-        return bId;
-    }
-
-    public void setbId(int bId) {
-        this.bId = bId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public float getMoneyOwned() {
-        return moneyOwned;
-    }
-
-    public void setMoneyOwned(float moneyOwned) {
-        this.moneyOwned = moneyOwned;
+    public void purchasePaint(Painting painting) throws Exception {
+        float moneyRemainig = this.moneyOwned - painting.getPrice();
+        if (moneyRemainig < 0) {
+            throw new Exception();
+        }
+        this.moneyOwned = moneyRemainig;
     }
 }
